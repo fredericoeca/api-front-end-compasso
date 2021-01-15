@@ -1,0 +1,51 @@
+<div class="row">
+
+    <div class="col col-12 mt-2">
+        <h6 class="ml-3">Repositórios Mais Visitados por {{ username }}</h6>
+    
+        <hr />
+
+    </div>
+
+    <div class="col col-12 col-sm-12 col-md-6 col-lg-6 col-xl-6 mb-3" *ngFor="let starred of starreds">
+        <div class="card h-100">
+            <h6 class="card-header">{{ starred.name }}</h6>
+            <div class="card-body">
+                
+                <div class="row mb-2">
+                    <div class="col col-12">
+                        <span class="small text-secondary">Proprietário</span>
+                    </div>
+                    <div class="col col-12">
+                        <div class="card-text">{{ starred?.owner.login }}</div>
+                        <div class="card-text" *ngIf="!starred?.owner">-</div>
+                    </div>
+                </div>
+
+                <div class="row mb-2">
+                    <div class="col col-12">
+                        <span class="small text-secondary">Linguagem</span>
+                    </div>
+                    <div class="col col-12">
+                        <div class="card-text">{{ starred?.language }}</div>
+                        <div class="card-text" *ngIf="!starred?.language">-</div>
+                    </div>
+                </div>               
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col col-12 mt-2" *ngIf="starreds?.length === 0">
+        <div class="alert alert-light" role="alert">
+            Nenhum repositório foi encontrado.
+        </div>
+    </div>
+
+    <div class="col col-12 mt-2" *ngIf="error">
+        <div class="alert alert-danger" role="alert">
+            Erro ao buscar repositórios do GitHub.
+        </div>
+    </div>
+
+</div>

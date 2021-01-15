@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* Alinhamento central vertical e horizontal */
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Alinhamento central vertical e esquerda horizontal */
+.center-left {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* Altura mínima relativa a 8% da área da tela */
+.min-vw-8 {
+    min-height: 8vw !important;
+}

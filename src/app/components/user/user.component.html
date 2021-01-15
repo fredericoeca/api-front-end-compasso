@@ -1,0 +1,71 @@
+<div *ngIf="!user && !error" class="alert alert-light" role="alert">
+    <h6 class="alert-heading">Bem Vindo(a)!</h6>
+    <p>Pesquise um <b>username</b> do GitHub para obter os detalhes do perfil.</p>
+    <hr>
+    <p class="mb-0">Desenvolvido por Frederico E. Cabral Araújo.</p>
+</div>
+
+<div class="card" *ngIf="user">
+    <h6 class="card-header">
+        <img *ngIf="user?.avatar_url" class="avatar mr-2" [src]="user?.avatar_url" />
+        {{ user?.name }}
+    </h6>
+    <div class="card-body">
+        
+        <div class="row mb-3">
+            <div class="col">
+                <button class="btn btn-outline-info btn-sm mr-3 w-25" (click)="goToRepos(username)">Repositórios</button>
+                <button class="btn btn-outline-info btn-sm w-25"(click)="goToStarred(username)">Mais Visitados</button>
+            </div>
+            <div class="col text-right">
+                <span class="small font-weight-bolder">{{ user?.followers }}</span>&nbsp;
+                <span class="small text-secondary mr-4">Seguidores</span>
+                                
+                <span class="small font-weight-bolder">{{ user?.following }}</span>&nbsp;  
+                <span class="small text-secondary mr-4">Seguindo</span>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row mb-2">
+            <div class="col col-2">
+                <span class="small text-secondary">Bio</span>
+            </div>
+            <div class="col col-9">
+                <div class="card-text">{{ user?.bio }}</div>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col col-2">
+                <span class="small text-secondary">Nome de Usuário</span>
+            </div>
+            <div class="col col-9">
+                <div class="card-text">{{ user?.login }}</div>        
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col col-2">
+                <span class="small text-secondary">Localização</span>
+            </div>
+            <div class="col col-9">
+                <div class="card-text">{{ user?.location }}</div>  
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col col-2">
+                <span class="small text-secondary">Criação</span>
+            </div>
+            <div class="col col-9">
+                <div class="card-text">{{ user?.created_at | date:'dd/MM/yyyy' }}</div>        
+            </div>
+        </div>
+        
+    </div>
+</div>
+
+<div class="col col-12 mt-2" *ngIf="error">
+    <div class="alert alert-light" role="alert">
+        Usuário não encontrado.
+    </div>
+</div>
